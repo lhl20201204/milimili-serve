@@ -6,7 +6,7 @@ class LoginController extends Controller {
   async login() {
     // 根据id查询用户信息
     const { ctx } = this;
-    const { account, pwd } = ctx.query;
+    const { account, pwd } = ctx.request.body;
     const users = await this.ctx.service.user.getLoginStatus(account, pwd);
     ctx.body = users;
   }
