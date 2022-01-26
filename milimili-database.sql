@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 25/01/2022 08:47:33
+ Date: 26/01/2022 18:37:08
 */
 
 SET NAMES utf8mb4;
@@ -33,12 +33,14 @@ CREATE TABLE `barrage` (
   `top` double DEFAULT NULL,
   `type` double DEFAULT NULL,
   PRIMARY KEY (`barrageId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of barrage
 -- ----------------------------
 BEGIN;
+INSERT INTO `barrage` (`videoId`, `sendTime`, `content`, `generateTime`, `color`, `size`, `barrageId`, `userId`, `top`, `type`) VALUES (00000000000000000014, 0, '我是第一条弹幕', '2022-01-25 10:11:16', '#ffffff', 14, 00000000000000000001, 00000000000000000001, 0, 1);
+INSERT INTO `barrage` (`videoId`, `sendTime`, `content`, `generateTime`, `color`, `size`, `barrageId`, `userId`, `top`, `type`) VALUES (00000000000000000014, 5, '我是第二条弹幕', '2022-01-26 15:16:27', '#ff00ff', 12, 00000000000000000002, 00000000000000000001, 0, 2);
 COMMIT;
 
 -- ----------------------------
@@ -226,10 +228,10 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000001, 'lhl', '1581', '我是up主', 'userAvatar1', 'visitor,admin');
-INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000002, 'lsp', '1216', NULL, NULL, NULL);
-INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000003, 'qxj', '4767', NULL, NULL, NULL);
-INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000004, 'pjd', '8249', NULL, NULL, NULL);
+INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000001, 'lhl', '1581', '我是up主', 'user_1_avatar', 'visitor,admin');
+INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000002, 'lsp', '1216', NULL, 'user_2_avatar', NULL);
+INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000003, 'qxj', '4767', NULL, 'user_3_avatar', NULL);
+INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000004, 'pjd', '8249', NULL, 'user_4_avatar', NULL);
 INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000005, 'hhh', '1111', NULL, NULL, NULL);
 INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000006, 'liaoang', '1581', NULL, NULL, NULL);
 INSERT INTO `user` (`userId`, `account`, `pwd`, `introduction`, `avatar`, `authority`) VALUES (00000000000000000007, 'liao_Ang', '1581', NULL, NULL, NULL);
@@ -256,22 +258,22 @@ CREATE TABLE `video` (
 -- Records of video
 -- ----------------------------
 BEGIN;
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000001, '2022-01-20 14:18:56', NULL, 00000000000000000001, 'video_11', '视频1', '哈哈哈哈哈');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000001, '2022-01-20 14:18:56', NULL, 00000000000000000001, 'video_1', '视频1', '哈哈哈哈哈');
 INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000002, '2022-01-20 14:22:41', NULL, 00000000000000000002, 'video_2', '视频2', '哈哈哈');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000003, '2022-01-20 14:23:11', NULL, 00000000000000000003, 'video_3', '视频3', '哈哈');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000004, '2022-01-20 14:23:52', NULL, 00000000000000000001, 'video_4', '视频4', '1');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000005, '2022-01-20 14:24:25', NULL, 00000000000000000002, 'video_5', '视频5', '2');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000006, '2022-01-20 14:25:01', NULL, 00000000000000000003, 'video_6', '视频6', '3');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000007, '2022-01-20 14:25:24', NULL, 00000000000000000004, 'video_7', '视频7', '1');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000008, '2022-01-20 14:25:49', NULL, 00000000000000000002, 'video_8', 'shi', '0');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000009, '2022-01-20 14:26:19', NULL, 00000000000000000001, 'video_9', 'hhh', '123');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000010, '2022-01-20 14:26:45', NULL, 00000000000000000003, 'video_10', 'video_10', '1');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000011, '2022-01-20 14:27:50', NULL, 00000000000000000001, 'video_11', 'video_11', '2');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000012, '2022-01-20 14:29:19', NULL, 00000000000000000003, 'video_12', 'video_12', '1');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000003, '2022-01-20 14:23:11', NULL, 00000000000000000003, 'video_3', '动漫混剪', '哈哈');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000004, '2022-01-20 14:23:52', NULL, 00000000000000000001, 'video_4', '一战成名', '1');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000005, '2022-01-20 14:24:25', NULL, 00000000000000000002, 'video_5', '平凡之路日语版', '2');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000006, '2022-01-20 14:25:01', NULL, 00000000000000000003, 'video_6', '错位时空日语版', '3');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000007, '2022-01-20 14:25:24', NULL, 00000000000000000004, 'video_7', '阎魔没有对面面灵气快', '1');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000008, '2022-01-20 14:25:49', NULL, 00000000000000000002, 'video_8', '阴阳师mv', '0');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000009, '2022-01-20 14:26:19', NULL, 00000000000000000001, 'video_9', '热爱105度的你，【日文翻唱】', '123');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000010, '2022-01-20 14:26:45', NULL, 00000000000000000003, 'video_10', '好想爱这个世界啊！！！！！！！', '1');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000011, '2022-01-20 14:27:50', NULL, 00000000000000000001, 'video_11', '夜空中最亮的星日语版', '2');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000012, '2022-01-20 14:29:19', NULL, 00000000000000000003, 'video_12', '好听的英文歌', '1');
 INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000013, '2022-01-20 14:31:59', NULL, 00000000000000000005, 'video_13', '我是测试标题', '3');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000014, '2022-01-20 14:33:05', NULL, 00000000000000000002, 'video_14', 'video_14', '5');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000015, '2022-01-20 14:33:22', NULL, 00000000000000000003, 'video_15', 'video_15', '6');
-INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000016, '2022-01-20 14:33:42', NULL, 00000000000000000004, 'video_16', 'video_16', '1');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000014, '2022-01-20 14:33:05', NULL, 00000000000000000002, 'video_14', '魂斗罗', '5');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000015, '2022-01-20 14:33:22', NULL, 00000000000000000003, 'video_15', '马龙vs 梁靖崑 世乒赛', '6');
+INSERT INTO `video` (`videoId`, `time`, `rank`, `userId`, `coverSrc`, `videoTitle`, `introduction`) VALUES (00000000000000000016, '2022-01-20 14:33:42', NULL, 00000000000000000004, 'video_16', '创越时空的思念日语版', '1');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
