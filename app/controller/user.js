@@ -18,6 +18,12 @@ class LoginController extends Controller {
     ctx.body = await this.ctx.service.user.getRegisterStatus(account, pwd);
   }
 
+  async getUserById() {
+    const { ctx } = this;
+    const { userId } = ctx.request.body;
+    ctx.body = await this.ctx.service.user.getUserById(userId);
+  }
+
 }
 
 module.exports = LoginController;

@@ -25,10 +25,10 @@ class VideoController extends Controller {
     ctx.body = fs.createReadStream(dirPath);
   }
 
-  async getVideoDetailById() {
+  async getPlayById() {
     const { ctx } = this;
     const { videoId } = ctx.request.body;
-    ctx.body = await ctx.service.video.getVideoDetailById(videoId);
+    ctx.body = await ctx.service.video.getPlayById(videoId);
   }
 
   async getVideoList() {

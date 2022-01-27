@@ -19,5 +19,9 @@ class LoginService extends Service {
     return 4102;
   }
 
+  async getUserById(userId) {
+    return await this.app.mysql.get('user', { userId });
+  }
+
 }
 module.exports = LoginService;
