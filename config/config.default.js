@@ -24,20 +24,20 @@ module.exports = appInfo => {
         // 密码
         password: '123456',
         // 数据库名
-        database: 'milimili',
+        database: 'milimili2',
       },
       // 是否加载到 app 上，默认开启
       app: true,
       // 是否加载到 agent 上，默认关闭
       agent: false,
-    },
+    }
   };
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1642476398434_7913';
 
   // add your middleware config here
-  config.middleware = [ 'codeMsg' ];
+  config.middleware = ['codeMsg'];
 
   config.security = {
     csrf: {
