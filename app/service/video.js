@@ -4,9 +4,18 @@ const Service = require('egg').Service;
 
 class VideoService extends Service {
 
-  async getVideoList () {
-    return await this.app.mysql.query('select * from  video order by rand() limit 6');
+  async getLatestVideo () {
+    return await this.app.mysql.query('select * from video order by videoId desc limit 1');
   }
+
+  async getVideoList () {
+    return await this.app.mysql.query('select * from video WHERE auditing>=0 order by rand() limit 6');
+  }
+
+  async getAuditingVideoList (videoAuditingStatus) {
+    return await this.app.mysql.query('select * from video WHERE auditing=' + videoAuditingStatus);
+  }
+
   async getPlayById (videoId) {
     console.log(`[getVideoDetailById]${videoId}`);
     return await this.app.mysql.select('play', { where: { videoId } });
@@ -81,5 +90,40 @@ class VideoService extends Service {
     console.log('[insertComment]', params);
     return await this.app.mysql.insert('comment', params)
   }
+
+  async insertVideo (params) {
+    console.log('[insertVideo]', params);
+    return await this.app.mysql.insert('video', params)
+  }
+
+  async deleteVideo (params) {
+    console.log('[deleteVideo]', params);
+    return await this.app.mysql.delete('video', params)
+  }
+
+  async updateVideo (params) {
+    console.log('[updateVideo]', params);
+    const { videoId } = params
+    if (!videoId) {
+      return 'params invaild'
+    }
+    return await this.app.mysql.update('video', params, { where: { videoId } })
+  }
+
+  async insertTag (params) {
+    console.log('[insertTag]', params);
+    return await this.app.mysql.insert('tag', params)
+  }
+
+  async deleteTag (params) {
+    console.log('[deleteTag]', params);
+    return await this.app.mysql.delete('tag', params)
+  }
+
+  async getVideoDetail (videoId) {
+    return await this.app.mysql.select('video', { where: { videoId } });
+  }
+
+
 }
 module.exports = VideoService;

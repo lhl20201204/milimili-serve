@@ -5,6 +5,7 @@
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
+const { resolve } = require('path');
 module.exports = appInfo => {
   /**
    * built-in config
@@ -50,6 +51,10 @@ module.exports = appInfo => {
       path: '',
       port: 9998,
     },
+  };
+
+  config.multipart = {
+    fileSize: '10240mb'
   };
 
   // add your user config here

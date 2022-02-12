@@ -21,7 +21,9 @@ class LoginService extends Service {
 
   async getUserById (userId) {
     console.log('【getUserById】', userId)
-    return await this.app.mysql.get('user', { userId });
+    let x = await this.app.mysql.get('user', { userId });
+    x.pwd = 'no permission'
+    return x
   }
 
   async insertSubscribe (params) {
