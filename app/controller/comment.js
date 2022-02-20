@@ -5,9 +5,9 @@ const Controller = require('egg').Controller;
 class CommentController extends Controller {
   async getCommentById () {
     const { ctx } = this;
-    const { videoId, auditing } = ctx.request.body;
+    const { videoId, userId, auditing } = ctx.request.body;
     console.log('【getCommentById】请求了评论');
-    ctx.body = await ctx.service.comment.getCommentById(videoId, auditing);
+    ctx.body = await ctx.service.comment.getCommentById(videoId, userId, auditing);
   }
 
   async getLoveById () {
@@ -32,6 +32,11 @@ class CommentController extends Controller {
     ctx.body = await ctx.service.comment.updateComment(ctx.request.body);
   }
 
+  async getAuditingCommentList () {
+    const { ctx } = this;
+    ctx.body = await ctx.service.comment.getAuditingCommentList(ctx.request.body);
+  }
+
   async deleteComment () {
     const { ctx } = this;
     const { commentId } = ctx.request.body
@@ -43,9 +48,9 @@ class CommentController extends Controller {
 
   async getCommentDetail () {
     const { ctx } = this;
-    const { commentId } = ctx.request.body;
+    const { commentId, auditing } = ctx.request.body;
     console.log('【getCommentDetail】', commentId);
-    ctx.body = await ctx.service.comment.getCommentDetail(commentId);
+    ctx.body = await ctx.service.comment.getCommentDetail(commentId, auditing);
   }
 }
 

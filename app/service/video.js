@@ -17,13 +17,13 @@ class VideoService extends Service {
   }
 
   async getPlayById (videoId) {
-    console.log(`[getVideoDetailById]${videoId}`);
+    console.log(`[getPlayById]${videoId}`);
     return await this.app.mysql.select('play', { where: { videoId } });
   }
 
-  async getLikesById (videoId) {
-    console.log('[getLikesById]', videoId);
-    return await this.app.mysql.select('likes', { where: { videoId } });
+  async getLikesById (videoId, userId) {
+    console.log('[getLikesById]', videoId, userId);
+    return videoId ? await this.app.mysql.select('likes', { where: { videoId } }) : await this.app.mysql.select('likes', { where: { userId } });
   }
 
   async insertLikes (params) {
@@ -36,9 +36,9 @@ class VideoService extends Service {
     return await this.app.mysql.delete('likes', params)
   }
 
-  async getCollectById (videoId) {
-    console.log('[getCollectById]', videoId);
-    return await this.app.mysql.select('collect', { where: { videoId } });
+  async getCollectById (videoId, userId) {
+    console.log('[getCollectById]', videoId, userId);
+    return videoId ? await this.app.mysql.select('collect', { where: { videoId } }) : await this.app.mysql.select('collect', { where: { userId } });
   }
 
   async insertCollect (params) {
@@ -51,9 +51,9 @@ class VideoService extends Service {
     return await this.app.mysql.delete('collect', params)
   }
 
-  async getForwardingById (videoId) {
-    console.log('[getForwardingById]', videoId);
-    return await this.app.mysql.select('forwarding', { where: { videoId } });
+  async getForwardingById (videoId, userId) {
+    console.log('[getForwardingById]', videoId, userId);
+    return videoId ? await this.app.mysql.select('forwarding', { where: { videoId } }) : await this.app.mysql.select('forwarding', { where: { userId } });
   }
 
   async insertForwarding (params) {
@@ -66,9 +66,9 @@ class VideoService extends Service {
     return await this.app.mysql.delete('forwarding', params)
   }
 
-  async getCoinById (videoId) {
-    console.log('[getCoinById]', videoId);
-    return await this.app.mysql.select('coin', { where: { videoId } });
+  async getCoinById (videoId, userId) {
+    console.log('[getCoinById]', videoId, userId);
+    return videoId ? await this.app.mysql.select('coin', { where: { videoId } }) : await this.app.mysql.select('coin', { where: { userId } });
   }
 
   async insertCoin (params) {
@@ -120,8 +120,8 @@ class VideoService extends Service {
     return await this.app.mysql.delete('tag', params)
   }
 
-  async getVideoDetail (videoId) {
-    return await this.app.mysql.select('video', { where: { videoId } });
+  async getVideoDetail (videoId, auditing) {
+    return auditing ? await this.app.mysql.select('video', { where: { videoId, auditing } }) : await this.app.mysql.select('video', { where: { videoId } });
   }
 
 

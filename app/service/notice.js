@@ -9,5 +9,14 @@ class NoticeService extends Service {
     return await this.app.mysql.insert('notice', params)
   }
 
+  async getNoticeById ({ type, typeId }) {
+    console.log('[getNoticeById]', { type, typeId });
+    return await this.app.mysql.select('notice', { where: { type, typeId } });
+  }
+
+  async getNoticeByNoticedUserId ({ noticedUserId }) {
+    console.log('[getNoticeByNoticedUserId]', { noticedUserId });
+    return await this.app.mysql.select('notice', { where: { noticedUserId } });
+  }
 }
 module.exports = NoticeService;

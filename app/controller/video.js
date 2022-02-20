@@ -85,8 +85,8 @@ class VideoController extends Controller {
 
   async getLikesById () {
     const { ctx } = this;
-    const { videoId } = ctx.request.body;
-    ctx.body = await ctx.service.video.getLikesById(videoId);
+    const { videoId, userId } = ctx.request.body;
+    ctx.body = await ctx.service.video.getLikesById(videoId, userId);
   }
 
   async insertLikes () {
@@ -101,8 +101,8 @@ class VideoController extends Controller {
 
   async getCollectById () {
     const { ctx } = this;
-    const { videoId } = ctx.request.body;
-    ctx.body = await ctx.service.video.getCollectById(videoId);
+    const { videoId, userId } = ctx.request.body;
+    ctx.body = await ctx.service.video.getCollectById(videoId, userId);
   }
 
   async insertCollect () {
@@ -117,8 +117,8 @@ class VideoController extends Controller {
 
   async getForwardingById () {
     const { ctx } = this;
-    const { videoId } = ctx.request.body;
-    ctx.body = await ctx.service.video.getForwardingById(videoId);
+    const { videoId, userId } = ctx.request.body;
+    ctx.body = await ctx.service.video.getForwardingById(videoId, userId);
   }
 
   async insertForwarding () {
@@ -133,8 +133,8 @@ class VideoController extends Controller {
 
   async getCoinById () {
     const { ctx } = this;
-    const { videoId } = ctx.request.body;
-    ctx.body = await ctx.service.video.getCoinById(videoId);
+    const { videoId, userId } = ctx.request.body;
+    ctx.body = await ctx.service.video.getCoinById(videoId, userId);
   }
 
   async insertCoin () {
@@ -193,9 +193,9 @@ class VideoController extends Controller {
 
   async getVideoDetail () {
     const { ctx } = this;
-    const { videoId } = ctx.request.body;
-    console.log('getVideoDetail', videoId);
-    ctx.body = await ctx.service.video.getVideoDetail(videoId);
+    const { videoId, auditing } = ctx.request.body;
+    console.log('getVideoDetail', videoId, auditing);
+    ctx.body = await ctx.service.video.getVideoDetail(videoId, auditing);
   }
 
 }

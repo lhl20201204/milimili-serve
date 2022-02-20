@@ -4,12 +4,16 @@ const Service = require('egg').Service;
 
 class CommentService extends Service {
 
-  async getCommentDetail (commentId) {
-    return await this.app.mysql.select('comment', { where: { commentId } });
+  async getAuditingCommentList ({ auditing }) {
+    return await this.app.mysql.query('select * from comment WHERE auditing=' + auditing);
   }
 
-  async getCommentById (videoId, auditing) {
-    return await this.app.mysql.select('comment', { where: { videoId, auditing } });
+  async getCommentDetail (commentId, auditing) {
+    return auditing ? await this.app.mysql.select('comment', { where: { commentId, auditing } }) : await this.app.mysql.select('comment', { where: { commentId } });
+  }
+
+  async getCommentById (videoId, userId, auditing) {
+    return videoId ? await this.app.mysql.select('comment', { where: { videoId, auditing } }) : await this.app.mysql.select('comment', { where: { userId, auditing } });
   }
 
   async getLoveById (commentId) {

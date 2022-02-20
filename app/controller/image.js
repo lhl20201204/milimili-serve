@@ -17,13 +17,14 @@ class GetImgController extends Controller {
   }
   async getImg () {
     const { ctx } = this;
-    const { path } = ctx.query;
+    let { path } = ctx.query;
+    path = path.split('?')[0]
     ctx.set('content-type', 'image/jpeg');
     const dirPath = resolve(__dirname, '../static/img/' + path + '.png');
-    // console.log('请求图片是', path, dirPath, fs.existsSync(dirPath));
     await this.getp();
-    // console.log('hhh');
+    console.log('请求了图片', path);
     if (!fs.existsSync(dirPath)) {
+      console.log(dirPath)
       return (ctx.body = 404);
     }
     ctx.body = fs.createReadStream(dirPath);

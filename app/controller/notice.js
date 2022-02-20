@@ -7,6 +7,15 @@ class NoticeController extends Controller {
     const { ctx } = this;
     ctx.body = await ctx.service.notice.insertNotice(ctx.request.body);
   }
+  async getNoticeById () {
+    const { ctx } = this;
+    ctx.body = await ctx.service.notice.getNoticeById(ctx.request.body);
+  }
+
+  async getNoticeByNoticedUserId () {
+    const { ctx } = this;
+    ctx.body = await ctx.service.notice.getNoticeByNoticedUserId(ctx.request.body);
+  }
 }
 
 module.exports = NoticeController;

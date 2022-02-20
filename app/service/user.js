@@ -22,8 +22,17 @@ class LoginService extends Service {
   async getUserById (userId) {
     console.log('【getUserById】', userId)
     let x = await this.app.mysql.get('user', { userId });
-    x.pwd = 'no permission'
+    x && (x.pwd = 'no permission')
     return x
+  }
+
+  async updateUser (params) {
+    console.log('[updateUser]', params);
+    const { userId } = params
+    if (!userId) {
+      return 'params invaild'
+    }
+    return await this.app.mysql.update('user', params, { where: { userId } })
   }
 
   async insertSubscribe (params) {
@@ -36,8 +45,12 @@ class LoginService extends Service {
     return await this.app.mysql.delete('subscribe', params)
   }
 
-  async getSubscribeById (upId) {
-    return await this.app.mysql.select('subscribe', { where: { upId } });
+  async getSubscribeById (upId, fansId) {
+    return upId ? await this.app.mysql.select('subscribe', { where: { upId } }) : await this.app.mysql.select('subscribe', { where: { fansId } });
+  }
+
+  async getAuditingVideoListByUserId (userId, auditing) {
+    return await this.app.mysql.query('select * from video WHERE userId=' + userId + ' and auditing=' + auditing);
   }
 
 }

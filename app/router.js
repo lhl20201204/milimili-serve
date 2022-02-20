@@ -16,6 +16,8 @@ module.exports = app => {
   router.post('/user/insertSubscribe', controller.user.insertSubscribe);
   router.post('/user/deleteSubscribe', controller.user.deleteSubscribe);
   router.post('/user/getSubscribeById', controller.user.getSubscribeById);
+  router.post('/user/getAuditingVideoListByUserId', controller.user.getAuditingVideoListByUserId);
+  router.post('/user/updateUser', controller.user.updateUser);
 
   router.post('/video/deleteVideoByPath', controller.video.deleteVideoByPath);
   router.get('/video/getVideo', controller.video.getVideo);
@@ -50,6 +52,8 @@ module.exports = app => {
   router.post('/barrage/insertBarrage', controller.barrage.insertBarrage);
 
   router.post('/notice/insertNotice', controller.notice.insertNotice);
+  router.post('/notice/getNoticeById', controller.notice.getNoticeById);
+  router.post('/notice/getNoticeByNoticedUserId', controller.notice.getNoticeByNoticedUserId);
 
   router.post('/complaint/insertComplaint', controller.complaint.insertComplaint)
   router.post('/complaint/getAuditingComplaintList', controller.complaint.getAuditingComplaintList)
@@ -62,4 +66,5 @@ module.exports = app => {
   router.post('/comment/deleteComment', controller.comment.deleteComment);
   router.post('/comment/updateComment', controller.comment.updateComment);
   router.post('/comment/getCommentDetail', controller.comment.getCommentDetail);
+  router.post('/comment/getAuditingCommentList', controller.comment.getAuditingCommentList);
 };

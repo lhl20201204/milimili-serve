@@ -34,11 +34,24 @@ class LoginController extends Controller {
     this.ctx.body = await ctx.service.user.deleteSubscribe(ctx.request.body);
   }
 
+  async updateUser () {
+    const { ctx } = this;
+    ctx.body = await ctx.service.user.updateUser(ctx.request.body);
+  }
+
   async getSubscribeById () {
     const { ctx } = this;
-    const { userId } = ctx.request.body;
-    ctx.body = await ctx.service.user.getSubscribeById(userId);
+    const { upId, fansId } = ctx.request.body;
+    ctx.body = await ctx.service.user.getSubscribeById(upId, fansId);
   }
+
+  async getAuditingVideoListByUserId () {
+    const { ctx } = this;
+    const { userId, auditing } = ctx.request.body;
+    ctx.body = await ctx.service.user.getAuditingVideoListByUserId(userId, auditing);
+  }
+
+
 
 }
 
