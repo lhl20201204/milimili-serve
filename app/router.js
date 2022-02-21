@@ -55,9 +55,9 @@ module.exports = app => {
   router.post('/notice/getNoticeById', controller.notice.getNoticeById);
   router.post('/notice/getNoticeByNoticedUserId', controller.notice.getNoticeByNoticedUserId);
 
-  router.post('/complaint/insertComplaint', controller.complaint.insertComplaint)
-  router.post('/complaint/getAuditingComplaintList', controller.complaint.getAuditingComplaintList)
-  router.post('/complaint/updateComplaint', controller.complaint.updateComplaint)
+  router.post('/complaint/insertComplaint', controller.complaint.insertComplaint);
+  router.post('/complaint/getAuditingComplaintList', controller.complaint.getAuditingComplaintList);
+  router.post('/complaint/updateComplaint', controller.complaint.updateComplaint);
 
   router.post('/comment/getCommentById', controller.comment.getCommentById);
   router.post('/comment/getLoveById', controller.comment.getLoveById);
@@ -67,4 +67,6 @@ module.exports = app => {
   router.post('/comment/updateComment', controller.comment.updateComment);
   router.post('/comment/getCommentDetail', controller.comment.getCommentDetail);
   router.post('/comment/getAuditingCommentList', controller.comment.getAuditingCommentList);
+  router.post('/comment/getReply', controller.comment.getReply);
+
 };
