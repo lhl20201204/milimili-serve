@@ -14,7 +14,7 @@
  Date: 16/02/2022 23:07:18
 */
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -325,15 +325,15 @@ INSERT INTO `comment` VALUES (00000000000000000004, 00000000000000000003, '2022-
 DROP TABLE IF EXISTS `complaint`;
 CREATE TABLE `complaint`  (
   `complaintId` bigint(20) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `originUserId` bigint(20) UNSIGNED ZEROFILL NULL DEFAULT NULL,
   `typeId` bigint(20) UNSIGNED ZEROFILL NULL DEFAULT NULL,
   `targetUserId` bigint(20) UNSIGNED ZEROFILL NULL DEFAULT NULL,
   `time` datetime(0) NULL DEFAULT NULL,
   `auditing` bigint(0) NULL DEFAULT NULL,
   PRIMARY KEY (`complaintId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of complaint
@@ -509,14 +509,14 @@ INSERT INTO `love` VALUES (00000000000000000185, 00000000000000000005, 000000000
 DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice`  (
   `noticeId` bigint(20) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `time` datetime(0) NULL DEFAULT NULL,
   `userId` bigint(20) UNSIGNED ZEROFILL NULL DEFAULT NULL,
   `noticedUserId` bigint(20) UNSIGNED ZEROFILL NULL DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `typeId` bigint(20) UNSIGNED ZEROFILL NULL DEFAULT NULL,
   PRIMARY KEY (`noticeId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of notice

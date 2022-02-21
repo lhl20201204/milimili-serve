@@ -9,11 +9,13 @@
 see [egg docs][egg] for more detail.
 
 ### Development
-
+安装navicat
+新建数据库 milimili2  utf8 utf8-generate-ci
+运行milimili-database.sql
 ```bash
 $ npm i
 $ npm run dev
-$ open http://localhost:7001/
+$ open http://localhost:9998/
 ```
 
 ### Deploy
