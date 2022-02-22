@@ -11,11 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
-<<<<<<< HEAD
- Date: 21/02/2022 21:57:46
-=======
  Date: 22/02/2022 19:02:38
->>>>>>> b18cc0fd069ed0bf52737d5c96611ab0359c8f2c
 */
 
 SET NAMES utf8mb4;
