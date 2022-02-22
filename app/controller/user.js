@@ -3,7 +3,7 @@
 const Controller = require('egg').Controller;
 
 class LoginController extends Controller {
-  async login () {
+  async login() {
     // 根据id查询用户信息
     const { ctx } = this;
     const { account, pwd } = ctx.request.body;
@@ -11,46 +11,45 @@ class LoginController extends Controller {
     ctx.body = users;
   }
 
-  async register () {
+  async register() {
     const { ctx } = this;
-    const { account, pwd } = ctx.request.body;
-    console.log({ account, pwd });
-    ctx.body = await this.ctx.service.user.getRegisterStatus(account, pwd);
+    const { account, pwd, avatar, userTime } = ctx.request.body;
+    console.log({ account, pwd, avatar, userTime });
+    ctx.body = await this.ctx.service.user.getRegisterStatus(account, pwd, avatar, userTime);
   }
 
-  async getUserById () {
+  async getUserById() {
     const { ctx } = this;
     const { userId } = ctx.request.body;
     ctx.body = await this.ctx.service.user.getUserById(userId);
   }
 
-  async insertSubscribe () {
+  async insertSubscribe() {
     const { ctx } = this;
     this.ctx.body = await ctx.service.user.insertSubscribe(ctx.request.body);
   }
 
-  async deleteSubscribe () {
+  async deleteSubscribe() {
     const { ctx } = this;
     this.ctx.body = await ctx.service.user.deleteSubscribe(ctx.request.body);
   }
 
-  async updateUser () {
+  async updateUser() {
     const { ctx } = this;
     ctx.body = await ctx.service.user.updateUser(ctx.request.body);
   }
 
-  async getSubscribeById () {
+  async getSubscribeById() {
     const { ctx } = this;
     const { upId, fansId } = ctx.request.body;
     ctx.body = await ctx.service.user.getSubscribeById(upId, fansId);
   }
 
-  async getAuditingVideoListByUserId () {
+  async getAuditingVideoListByUserId() {
     const { ctx } = this;
     const { userId, auditing } = ctx.request.body;
     ctx.body = await ctx.service.user.getAuditingVideoListByUserId(userId, auditing);
   }
-
 
 
 }
