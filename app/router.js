@@ -69,4 +69,8 @@ module.exports = app => {
   router.post('/comment/getAuditingCommentList', controller.comment.getAuditingCommentList);
   router.post('/comment/getReply', controller.comment.getReply);
 
+  router.post('/message/getPrivateMessage', controller.message.getPrivateMessage);
+  router.post('/message/insertMessage', controller.message.insertMessage);
+  router.post('/message/getMessageById', controller.message.getMessageById);
+
 };
